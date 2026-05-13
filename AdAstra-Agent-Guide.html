@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
+<title>Your CRM Guide — SP Ad Astra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --navy:#1a3c8f;--navy-dark:#102464;--navy-light:#2a52b0;
+  --gold:#f0a500;--gold-light:#fff3cc;--gold-dark:#c47f00;
+  --white:#fff;--gray-50:#f8fafc;--gray-100:#eef0f6;
+  --gray-300:#d0d5e8;--gray-500:#7a84a8;--gray-700:#3d4466;--gray-900:#1a1e33;
+  --green:#16a34a;--green-light:#dcfce7;--red:#dc2626;--orange:#f47920;
+}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:linear-gradient(180deg,#f6f8fc 0%,#f0f4fb 100%);background-attachment:fixed;color:var(--gray-900);min-height:100vh;max-width:768px;margin:0 auto;line-height:1.6;padding-bottom:80px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 60%,var(--navy-light) 100%);color:white;padding:36px 24px 32px;border-radius:0 0 28px 28px;box-shadow:0 8px 24px rgba(15,23,42,0.15);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-60px;right:-60px;width:240px;height:240px;background:radial-gradient(circle,rgba(240,165,0,0.2) 0%,transparent 70%)}
+.hero-eyebrow{font-size:11px;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;position:relative;z-index:1}
+.hero-title{font-size:28px;font-weight:800;letter-spacing:-0.025em;margin-bottom:8px;line-height:1.15;position:relative;z-index:1}
+.hero-sub{font-size:14px;color:rgba(255,255,255,0.78);font-weight:500;position:relative;z-index:1;line-height:1.55}
+
+/* Why section */
+.why-card{background:linear-gradient(135deg,var(--gold) 0%,#ffc94d 100%);color:var(--navy-dark);border-radius:16px;padding:20px 22px;margin:20px 16px;box-shadow:0 8px 24px rgba(240,165,0,0.3)}
+.why-title{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px}
+.why-text{font-size:15px;font-weight:600;line-height:1.5;letter-spacing:-0.01em}
+.why-text strong{font-weight:800}
+
+/* Table of contents */
+.toc{background:white;border-radius:16px;padding:20px;margin:16px 16px 24px;box-shadow:0 2px 8px rgba(26,60,143,0.06)}
+.toc-title{font-size:11px;font-weight:700;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px}
+.toc-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--gray-100);text-decoration:none;color:var(--gray-900);font-size:14px;font-weight:500;transition:background 0.15s}
+.toc-item:last-child{border-bottom:none}
+.toc-item:active{background:var(--gray-50);margin:0 -10px;padding:11px 10px;border-radius:8px}
+.toc-num{background:var(--navy);color:white;font-size:11px;font-weight:700;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.toc-arrow{margin-left:auto;color:var(--gray-300);font-size:18px}
+
+/* Sections */
+.section{padding:0 16px;margin-bottom:36px}
+.section-header{display:flex;align-items:center;gap:14px;margin:36px 0 18px;padding-top:12px}
+.section-num{background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:white;font-size:15px;font-weight:800;width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,60,143,0.3)}
+.section-title{font-size:22px;font-weight:800;color:var(--gray-900);letter-spacing:-0.025em;line-height:1.2}
+
+/* Cards */
+.card{background:white;border-radius:14px;padding:20px;margin-bottom:14px;box-shadow:0 1px 3px rgba(15,23,42,0.06), 0 2px 8px rgba(26,60,143,0.05)}
+.card h3{font-size:17px;font-weight:700;color:var(--gray-900);margin-bottom:10px;letter-spacing:-0.015em}
+.card p{font-size:14px;color:var(--gray-700);margin-bottom:12px;line-height:1.6}
+.card p:last-child{margin-bottom:0}
+.card strong{color:var(--gray-900);font-weight:700}
+
+/* Steps */
+.steps{list-style:none;counter-reset:step;padding-left:0}
+.steps li{counter-increment:step;position:relative;padding:14px 16px 14px 56px;margin-bottom:10px;background:var(--gray-50);border-radius:11px;font-size:14px;color:var(--gray-700);line-height:1.55}
+.steps li::before{content:counter(step);position:absolute;left:14px;top:14px;width:28px;height:28px;background:var(--navy);color:white;font-size:13px;font-weight:700;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.steps li strong{color:var(--gray-900)}
+.steps li:last-child{margin-bottom:0}
+
+/* Callouts */
+.callout{border-radius:12px;padding:14px 16px;margin:14px 0;display:flex;gap:12px;align-items:flex-start}
+.callout-icon{font-size:22px;flex-shrink:0;line-height:1.3}
+.callout-body{flex:1;font-size:13.5px;line-height:1.55}
+.callout-body strong{display:block;margin-bottom:4px;font-size:13.5px;font-weight:700}
+.callout.tip{background:#e8eefb;border-left:4px solid var(--navy)}
+.callout.tip strong{color:var(--navy-dark)}
+.callout.warn{background:var(--gold-light);border-left:4px solid var(--gold);color:#92400e}
+.callout.warn strong{color:#92400e}
+.callout.danger{background:#fee2e2;border-left:4px solid var(--red);color:#991b1b}
+.callout.danger strong{color:#991b1b}
+.callout.good{background:var(--green-light);border-left:4px solid var(--green);color:#15803d}
+.callout.good strong{color:#15803d}
+.callout.gold{background:linear-gradient(135deg,#fffbeb 0%,var(--gold-light) 100%);border-left:4px solid var(--gold);color:#92400e}
+.callout.gold strong{color:#92400e}
+
+/* Badges */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:-0.005em;vertical-align:middle}
+.badge.urgent{background:#fee2e2;color:var(--red)}
+.badge.high{background:#fff0e6;color:var(--orange)}
+.badge.med{background:var(--gold-light);color:#92400e}
+.badge.low{background:var(--green-light);color:var(--green)}
+.badge.navy{background:#e8eefb;color:var(--navy-dark)}
+
+/* Stage cards */
+.stage-grid{display:grid;grid-template-columns:1fr;gap:9px;margin:14px 0}
+.stage-row{background:white;border-radius:11px;padding:14px 16px;border-left:4px solid var(--gray-300);box-shadow:0 1px 3px rgba(15,23,42,0.05)}
+.stage-row.s-new{border-left-color:#94a3b8}
+.stage-row.s-contacted{border-left-color:#818cf8}
+.stage-row.s-followup{border-left-color:var(--gold)}
+.stage-row.s-met{border-left-color:#38bdf8}
+.stage-row.s-proposed{border-left-color:var(--navy)}
+.stage-row.s-closed{border-left-color:var(--green)}
+.stage-row.s-rejected{border-left-color:var(--red)}
+.stage-name{font-size:14px;font-weight:700;color:var(--gray-900);margin-bottom:4px}
+.stage-meaning{font-size:12.5px;color:var(--gray-500);line-height:1.5}
+.stage-action{font-size:12px;color:var(--navy);font-weight:600;margin-top:6px}
+
+/* Do/Don't */
+.do-dont{display:grid;grid-template-columns:1fr;gap:11px;margin:14px 0}
+.do-card{background:var(--green-light);border-radius:11px;padding:14px 16px}
+.dont-card{background:#fee2e2;border-radius:11px;padding:14px 16px}
+.do-title{font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.dont-title{font-size:11px;font-weight:800;color:var(--red);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+.do-list,.dont-list{list-style:none}
+.do-list li,.dont-list li{font-size:13px;color:#15803d;padding:4px 0;line-height:1.55;padding-left:22px;position:relative;font-weight:500}
+.dont-list li{color:#991b1b}
+.do-list li::before{content:"✓";position:absolute;left:0;font-weight:800;font-size:14px}
+.dont-list li::before{content:"✕";position:absolute;left:0;font-weight:800;font-size:14px}
+
+/* Engine score boxes */
+.score-grid{display:grid;grid-template-columns:1fr;gap:9px;margin:14px 0}
+.score-row{background:white;border-radius:11px;padding:13px 15px;box-shadow:0 1px 3px rgba(15,23,42,0.05);display:flex;align-items:center;gap:14px}
+.score-circle{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+.score-circle.urgent{background:#fee2e2;color:var(--red)}
+.score-circle.high{background:#fff0e6;color:var(--orange)}
+.score-circle.med{background:var(--gold-light);color:#92400e}
+.score-circle.low{background:var(--green-light);color:var(--green)}
+.score-text{flex:1}
+.score-label{font-size:13px;font-weight:700;color:var(--gray-900)}
+.score-desc{font-size:12px;color:var(--gray-500);margin-top:2px;line-height:1.45}
+
+/* Checklist */
+.checklist{background:linear-gradient(135deg,var(--navy-dark),var(--navy));color:white;border-radius:16px;padding:22px;margin:16px 0;box-shadow:0 8px 24px rgba(15,23,42,0.2)}
+.checklist-title{font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:16px}
+.checklist-item{display:flex;gap:13px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.12)}
+.checklist-item:last-child{border-bottom:none}
+.checklist-box{width:22px;height:22px;border:2px solid rgba(255,255,255,0.4);border-radius:6px;flex-shrink:0;margin-top:1px;background:rgba(255,255,255,0.05)}
+.checklist-text{flex:1;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.95)}
+.checklist-text strong{color:var(--gold);font-weight:700}
+
+/* FAQ */
+.faq-item{background:white;border-radius:11px;padding:15px 17px;margin-bottom:9px;box-shadow:0 1px 3px rgba(15,23,42,0.05)}
+.faq-q{font-size:14.5px;font-weight:700;color:var(--gray-900);margin-bottom:7px;letter-spacing:-0.01em}
+.faq-a{font-size:13.5px;color:var(--gray-700);line-height:1.6}
+.faq-a strong{color:var(--gray-900)}
+
+/* Big motivation block */
+.motivate{background:linear-gradient(135deg,var(--gold-dark) 0%,var(--gold) 100%);color:white;border-radius:18px;padding:26px 22px;margin:24px 16px;box-shadow:0 8px 24px rgba(196,127,0,0.3);text-align:center}
+.motivate-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;opacity:0.85}
+.motivate-quote{font-size:18px;font-weight:700;line-height:1.4;letter-spacing:-0.015em;margin-bottom:8px}
+.motivate-sig{font-size:12px;opacity:0.85;font-weight:500;margin-top:10px}
+
+/* Behavior box - emphasizes learning */
+.behavior-box{background:linear-gradient(135deg,#0f1e3d,#1a3c8f);color:white;border-radius:16px;padding:22px;margin:14px 0;box-shadow:0 8px 24px rgba(15,23,42,0.2);position:relative;overflow:hidden}
+.behavior-box::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(240,165,0,0.15) 0%,transparent 70%)}
+.behavior-eyebrow{font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;position:relative;z-index:1}
+.behavior-headline{font-size:18px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;line-height:1.3;position:relative;z-index:1}
+.behavior-text{font-size:13.5px;color:rgba(255,255,255,0.85);line-height:1.6;position:relative;z-index:1}
+.behavior-text strong{color:var(--gold);font-weight:700}
+
+/* Footer */
+.footer{text-align:center;padding:36px 24px 50px;color:var(--gray-500);font-size:12px;line-height:1.7}
+.footer-brand{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-0.01em}
+
+kbd{background:var(--gray-100);border:1px solid var(--gray-300);border-radius:5px;padding:2px 8px;font-family:inherit;font-size:11.5px;font-weight:700;color:var(--gray-700)}
+
+@media(min-width:600px){
+  .do-dont{grid-template-columns:1fr 1fr}
+  .stage-grid{grid-template-columns:1fr 1fr}
+  .score-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">SP Ad Astra · Your CRM Playbook</div>
+  <h1 class="hero-title">Welcome to your<br>second brain.</h1>
+  <p class="hero-sub">A simple guide to mastering the CRM in 30 minutes. Built for beginners. Read it on your phone.</p>
+</div>
+
+<!-- WHY THIS MATTERS -->
+<div class="why-card">
+  <div class="why-title">⚡ Why this CRM is different</div>
+  <div class="why-text">The more you use it, the <strong>smarter it becomes for you</strong>. It learns from your activity, tells you who to call today, and shows you which leads are about to slip away.</div>
+</div>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-title">What you'll learn</div>
+  <a href="#s1" class="toc-item"><div class="toc-num">1</div>Getting Started<span class="toc-arrow">›</span></a>
+  <a href="#s2" class="toc-item"><div class="toc-num">2</div>Your Daily Morning Routine<span class="toc-arrow">›</span></a>
+  <a href="#s3" class="toc-item"><div class="toc-num">3</div>Adding a New Lead<span class="toc-arrow">›</span></a>
+  <a href="#s4" class="toc-item"><div class="toc-num">4</div>Lead Stages Explained<span class="toc-arrow">›</span></a>
+  <a href="#s5" class="toc-item"><div class="toc-num">5</div>Working a Lead<span class="toc-arrow">›</span></a>
+  <a href="#s6" class="toc-item"><div class="toc-num">6</div>Closing a Lead<span class="toc-arrow">›</span></a>
+  <a href="#s7" class="toc-item"><div class="toc-num">7</div>Understanding Smart Scores<span class="toc-arrow">›</span></a>
+  <a href="#s8" class="toc-item"><div class="toc-num">8</div>Birthdays &amp; Anniversaries<span class="toc-arrow">›</span></a>
+  <a href="#s9" class="toc-item"><div class="toc-num">9</div>Daily &amp; Weekly Checklist<span class="toc-arrow">›</span></a>
+  <a href="#s10" class="toc-item"><div class="toc-num">10</div>Compliance Reminders<span class="toc-arrow">›</span></a>
+  <a href="#s11" class="toc-item"><div class="toc-num">11</div>Common Questions<span class="toc-arrow">›</span></a>
+</nav>
+
+<!-- THE BEHAVIORAL TRUTH -->
+<section class="section" style="margin-top:8px">
+  <div class="behavior-box">
+    <div class="behavior-eyebrow">🧠 The Most Important Thing</div>
+    <div class="behavior-headline">Feed it data. It feeds you results.</div>
+    <p class="behavior-text">
+      This CRM doesn't work because of magic. It works because <strong>YOU</strong> give it information every day. Every lead you add, every contact you log, every closed case you record — all of it teaches the system who to push you toward today.
+      <br><br>
+      Skip a day, the system has nothing new to learn from. Use it daily, and within 2 weeks you'll feel it. The right names will appear in <strong>Today's 5</strong>. The right alerts will pop up. The system becomes your morning coffee.
+    </p>
+  </div>
+</section>
+
+<!-- ============== SECTION 1: GETTING STARTED ============== -->
+<section id="s1" class="section">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2 class="section-title">Getting Started</h2>
+  </div>
+
+  <div class="card">
+    <h3>First Time Login</h3>
+    <ol class="steps">
+      <li>Open <strong>smartpera.com/AdAstraCRM</strong> on your phone browser.</li>
+      <li>Tap your <strong>name</strong> from the dropdown list.</li>
+      <li>Enter your <strong>4-digit PIN</strong>. Your manager Medz gave this to you.</li>
+      <li>Tap <strong>Login</strong>. You're in.</li>
+    </ol>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-icon">📱</div>
+    <div class="callout-body">
+      <strong>Add to your phone's home screen</strong>
+      On iPhone: tap the Share button → "Add to Home Screen". On Android: tap the menu (three dots) → "Add to Home Screen" or "Install app". Now the CRM works like a real app. No more typing the URL.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Change Your PIN Right Away</h3>
+    <p>Go to <strong>More → Change PIN</strong> in the bottom menu. Pick something only you know. This protects your client data.</p>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-icon">🔒</div>
+    <div class="callout-body">
+      <strong>Never share your PIN</strong>
+      Your clients trust you with their personal information. If anyone else logs in as you, that trust is broken. Keep your PIN private.
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 2: DAILY MORNING ROUTINE ============== -->
+<section id="s2" class="section">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2 class="section-title">Your Daily Morning Routine</h2>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-icon">☕</div>
+    <div class="callout-body">
+      <strong>Open the CRM with your coffee. Every morning. 5 minutes.</strong>
+      This single habit will change your results in 30 days. Promise.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The 5-Minute Routine</h3>
+    <ol class="steps">
+      <li><strong>Check 🎂 Today's Celebrations</strong> at the top. Send a birthday message to any client whose birthday is today. Takes 30 seconds.</li>
+      <li><strong>Look at 🎯 Today's Suggested Focus</strong> (Today's 5). These are the 5 leads the engine picked for you today based on urgency and potential.</li>
+      <li><strong>Tap WA or Email</strong> on each one and reach out. The message is already written for you — just review and send.</li>
+      <li><strong>Tap ✓ Done</strong> after you've worked each lead. The card disappears so you can see your progress.</li>
+      <li><strong>Check ⚡ Needs Attention</strong> for any leads that are hot, stale, or new and uncontacted. Reach out to anyone you missed.</li>
+    </ol>
+  </div>
+
+  <div class="callout good">
+    <div class="callout-icon">🎉</div>
+    <div class="callout-body">
+      <strong>When all 5 are done, you'll see a celebration screen</strong>
+      "You're caught up for today!" That feeling never gets old. It means you did the work that drives results.
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-icon">⏰</div>
+    <div class="callout-body">
+      <strong>If you skip a day, the engine still works</strong>
+      But you'll come back to a pile of overdue follow-ups and stale leads. Don't let it pile up. 5 minutes daily beats 1 hour weekly.
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 3: ADDING A LEAD ============== -->
+<section id="s3" class="section">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2 class="section-title">Adding a New Lead</h2>
+  </div>
+
+  <div class="card">
+    <h3>How to Add</h3>
+    <ol class="steps">
+      <li>Tap the big <strong>+ button</strong> at the bottom right (or go to Leads tab → +).</li>
+      <li>Fill in the lead's details. Don't worry — only Name is required.</li>
+      <li>Tap <strong>Save Lead</strong>. The CRM remembers everything.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Which Fields Actually Matter</h3>
+    <p>You don't need to fill in everything. Focus on the ones that help the engine work for you:</p>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="do-title">Always fill these in</div>
+      <ul class="do-list">
+        <li><strong>Name</strong> — obviously</li>
+        <li><strong>Phone</strong> — for WhatsApp button</li>
+        <li><strong>Source</strong> — so the engine learns which sources work</li>
+        <li><strong>Profession</strong> — helps target your content</li>
+        <li><strong>Income range</strong> — affects priority score</li>
+        <li><strong>Stage</strong> — defaults to New Lead</li>
+      </ul>
+    </div>
+    <div class="dont-card">
+      <div class="dont-title">Skip these for now</div>
+      <ul class="dont-list">
+        <li>Pass type if you don't know yet</li>
+        <li>Cases (you'll add later when proposing)</li>
+        <li>Follow-up date until first contact</li>
+        <li>FYC until you actually close</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-icon">💡</div>
+    <div class="callout-body">
+      <strong>Why source matters so much</strong>
+      Right now your team's data shows TikTok converts at 60% and Referrals at 50%. If you don't tag sources properly, you can't see which sources actually make you money. Always pick the right source.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The Source Options Explained</h3>
+    <p>Pick the one that best describes how you got this lead:</p>
+    <p><strong>Referral</strong> — Someone you already know introduced you.<br>
+    <strong>Client</strong> — An existing client who's bringing new business.<br>
+    <strong>TikTok</strong> — They found you on your TikTok page.<br>
+    <strong>Facebook</strong> — They found you on Facebook.<br>
+    <strong>Social</strong> — Met at church, gathering, or social event (NOT social media).<br>
+    <strong>Scorecard</strong> — They filled out the Financial Health Scorecard.<br>
+    <strong>Lead Gen</strong> — From a calculator or quiz tool.<br>
+    <strong>Website</strong> — From smartpera.com.<br>
+    <strong>Advertisement</strong> — From a paid ad.<br>
+    <strong>Event</strong> — From an event you attended (you'll add the event name).<br>
+    <strong>Cold Activity</strong> — You reached out cold (street, cold DM, walk-in).<br>
+    <strong>Others</strong> — Only when none of the above fits.</p>
+  </div>
+</section>
+
+<!-- ============== SECTION 4: STAGES ============== -->
+<section id="s4" class="section">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2 class="section-title">Lead Stages Explained</h2>
+  </div>
+
+  <div class="card">
+    <h3>Stages are the heart of the CRM</h3>
+    <p>Every lead is in one stage at a time. As you talk to them, you move them through stages. The engine watches these stages to decide who's hot and who's stuck.</p>
+  </div>
+
+  <div class="stage-grid">
+    <div class="stage-row s-new">
+      <div class="stage-name">New Lead</div>
+      <div class="stage-meaning">You just added them. You haven't talked yet.</div>
+      <div class="stage-action">→ Action: Reach out within 24 hours</div>
+    </div>
+    <div class="stage-row s-contacted">
+      <div class="stage-name">Contacted</div>
+      <div class="stage-meaning">You sent them a message or made a call.</div>
+      <div class="stage-action">→ Action: Try to set a meeting</div>
+    </div>
+    <div class="stage-row s-followup">
+      <div class="stage-name">Follow Up</div>
+      <div class="stage-meaning">You scheduled a follow-up. They said "not now" or asked to talk later.</div>
+      <div class="stage-action">→ Action: Hit them up on the follow-up date</div>
+    </div>
+    <div class="stage-row s-met">
+      <div class="stage-name">Met</div>
+      <div class="stage-meaning">You had a fact-find meeting with them.</div>
+      <div class="stage-action">→ Action: Send proposal within 48 hours</div>
+    </div>
+    <div class="stage-row s-proposed">
+      <div class="stage-name">Proposed</div>
+      <div class="stage-meaning">You sent them a recommendation/quote.</div>
+      <div class="stage-action">→ Action: Follow up to close or handle objections</div>
+    </div>
+    <div class="stage-row s-closed">
+      <div class="stage-name">Closed</div>
+      <div class="stage-meaning">They signed up! Your client now.</div>
+      <div class="stage-action">→ Action: Enter FYC, set follow-up case opportunity</div>
+    </div>
+    <div class="stage-row s-rejected">
+      <div class="stage-name">Rejected</div>
+      <div class="stage-meaning">They said no. Or you decided they're not a fit.</div>
+      <div class="stage-action">→ Action: Add reason. May still re-engage later.</div>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <div class="callout-icon">⚠️</div>
+    <div class="callout-body">
+      <strong>Always update the stage when something changes</strong>
+      If you had a meeting but the lead still shows "Contacted," the engine won't know to push you toward sending a proposal. Stages = your reality. Keep them accurate.
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 5: WORKING A LEAD ============== -->
+<section id="s5" class="section">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2 class="section-title">Working a Lead</h2>
+  </div>
+
+  <div class="card">
+    <h3>Opening a Lead</h3>
+    <p>Tap any lead card. You'll see all their details — name, phone, email, source, history.</p>
+    <p>At the top, you'll see the <strong>🧠 Smart Analysis</strong> panel. It's collapsed by default. Tap it to see what the engine thinks about this lead.</p>
+  </div>
+
+  <div class="card">
+    <h3>The Two Magic Buttons</h3>
+    <p><strong>📱 WA (WhatsApp)</strong> — Opens WhatsApp with a pre-written message based on the lead's stage. You can edit before sending. Always review first.</p>
+    <p><strong>✉️ Email</strong> — Opens your Outlook (or default mail app) with a pre-written subject and body. Same thing — review and send.</p>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-icon">✨</div>
+    <div class="callout-body">
+      <strong>The messages are smart</strong>
+      A "New Lead" gets a friendly introduction message. A "Proposed" lead gets a gentle check-in. A "Closed" client gets a relationship-building message. The engine writes different messages for different stages.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Updating Information</h3>
+    <p>Tap <strong>Edit Lead</strong> at the bottom of the lead detail. Change anything — stage, FYC, remarks, next action, follow-up date.</p>
+    <p>The CRM saves changes automatically. The engine adapts the next time you open the dashboard.</p>
+  </div>
+
+  <div class="card">
+    <h3>Adding Activity Notes (Remarks)</h3>
+    <p>After every conversation, add a quick remark. Example: <em>"Called 3pm, said busy with kids. Try Saturday morning."</em></p>
+    <p>This builds the lead's history. When you come back in 2 weeks, you won't forget what they said.</p>
+  </div>
+
+  <div class="callout good">
+    <div class="callout-icon">🧠</div>
+    <div class="callout-body">
+      <strong>Every note teaches the system</strong>
+      The engine reads the date of your last contact. The more current your notes, the smarter your dashboard becomes.
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 6: CLOSING ============== -->
+<section id="s6" class="section">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2 class="section-title">Closing a Lead</h2>
+  </div>
+
+  <div class="card">
+    <h3>When They Sign Up</h3>
+    <ol class="steps">
+      <li>Open the lead.</li>
+      <li>Tap <strong>Edit Lead</strong>.</li>
+      <li>Change <strong>Stage</strong> to <strong>Closed</strong>.</li>
+      <li><strong>Enter the actual FYC</strong> in dollars. This is critical.</li>
+      <li>Add the <strong>Case Types</strong> — Life Insurance, Critical Illness, Hospital, Investment, etc.</li>
+      <li>Tap Save.</li>
+    </ol>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-icon">💸</div>
+    <div class="callout-body">
+      <strong>If you don't enter FYC, your real performance is hidden</strong>
+      A "Closed" lead with $0 FYC looks like you did nothing. The team's data shows most closed leads have $0 FYC entered. Don't be that person. Always enter the real number.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Set the Follow-Up Case Opportunity</h3>
+    <p>After you mark a lead Closed, the CRM will ask: <strong>"Is there a Follow-Up Case opportunity later for this client?"</strong></p>
+    <p>Examples:</p>
+    <p>• Closed Life Insurance only? → Future opportunity: Critical Illness rider<br>
+    • Closed Hospital Plan only? → Future opportunity: Income protection<br>
+    • Young client closed Education plan? → Future opportunity: Retirement<br>
+    • Investment only? → Future opportunity: Protection foundation</p>
+    <p>Set the <strong>revisit date</strong> (default 90 days) and write a quick note. The CRM will remind you to come back to it.</p>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-icon">💰</div>
+    <div class="callout-body">
+      <strong>Follow-Up Cases = your hidden FYC pipeline</strong>
+      Every closed client is a future case. The system tracks them, reminds you, and pushes you to mine your own client list before chasing new leads. Use it.
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 7: SMART SCORES ============== -->
+<section id="s7" class="section">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <h2 class="section-title">Understanding Smart Scores</h2>
+  </div>
+
+  <div class="card">
+    <h3>What the Numbers Mean</h3>
+    <p>Every active lead gets a <strong>priority score from 0 to 100</strong>. The higher the number, the more urgent.</p>
+    <p>The engine looks at: lead stage, days since last contact, follow-up date, FYC potential, follow-up case opportunities, and more. You don't need to memorize this. Just trust the score.</p>
+  </div>
+
+  <div class="score-grid">
+    <div class="score-row">
+      <div class="score-circle urgent">80+</div>
+      <div class="score-text">
+        <div class="score-label">🔴 URGENT</div>
+        <div class="score-desc">Drop everything. Contact today. Probably overdue or high-value at risk.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-circle high">60-79</div>
+      <div class="score-text">
+        <div class="score-label">🟠 HIGH</div>
+        <div class="score-desc">Work this week. Strong opportunity or scheduled follow-up.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-circle med">40-59</div>
+      <div class="score-text">
+        <div class="score-label">🟡 MEDIUM</div>
+        <div class="score-desc">Keep nurturing. Don't let it cool down.</div>
+      </div>
+    </div>
+    <div class="score-row">
+      <div class="score-circle low">0-39</div>
+      <div class="score-text">
+        <div class="score-label">🟢 LOW / MONITOR</div>
+        <div class="score-desc">No urgency right now. Will surface when something changes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <div class="callout-icon">🎯</div>
+    <div class="callout-body">
+      <strong>The lead list is auto-sorted by priority</strong>
+      When you go to your Leads tab, the most urgent ones appear at the top. You don't need to search. The engine already did the work.
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>What the Smart Analysis Panel Tells You</h3>
+    <p>When you tap to expand it, you'll see:</p>
+    <p><strong>📊 What's Happening</strong> — Diagnosis of where this lead is right now<br>
+    <strong>🎯 Suggested Next Action</strong> — What the engine thinks you should do<br>
+    <strong>🩺 Coverage Insight</strong> — What insurance coverage gaps exist<br>
+    <strong>🪪 Pass Context</strong> — S Pass vs E Pass vs PR considerations<br>
+    <strong>⚠️ Flags &amp; Hygiene</strong> — Things to be aware of (e.g. birthday coming, missing data)<br>
+    <strong>💬 Suggested Message</strong> — Pre-written WhatsApp text you can copy</p>
+  </div>
+</section>
+
+<!-- ============== SECTION 8: BIRTHDAYS ============== -->
+<section id="s8" class="section">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <h2 class="section-title">Birthdays &amp; Anniversaries</h2>
+  </div>
+
+  <div class="card">
+    <h3>The Easiest Win in Sales</h3>
+    <p>Remembering a client's birthday costs you 30 seconds. The relationship payoff lasts years.</p>
+    <p>The CRM shows you <strong>today's birthdays</strong> at the top of your dashboard. Quick buttons let you send a WhatsApp or email greeting in seconds.</p>
+  </div>
+
+  <div class="card">
+    <h3>How to Capture Birthdays</h3>
+    <ol class="steps">
+      <li>When adding or editing a lead, fill in the <strong>Date of Birth</strong> field.</li>
+      <li>If they don't share it, tick <strong>"DOB not known"</strong>.</li>
+      <li>The engine will alert you 7 days before, then on the day itself.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h3>Policy Anniversaries (For Closed Clients Only)</h3>
+    <p>When you close a client, set their <strong>Policy Anniversary</strong> date. The CRM will remind you 14 days before the anniversary to schedule an annual review.</p>
+    <p>Annual reviews lead to riders, top-ups, and referrals. This is how you build your renewal income and follow-up case pipeline.</p>
+  </div>
+
+  <div class="callout gold">
+    <div class="callout-icon">🎂</div>
+    <div class="callout-body">
+      <strong>One birthday message can change everything</strong>
+      Your client gets dozens of generic greetings on their birthday. Yours is from someone who actually helped them with their finances. They remember. That's how you become "their advisor."
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 9: CHECKLISTS ============== -->
+<section id="s9" class="section">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <h2 class="section-title">Daily &amp; Weekly Checklist</h2>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">☀️ Every Morning (5 minutes)</div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Check Today's Celebrations</strong> — send birthday/anniversary messages</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Work your Today's 5</strong> — tap WA or Email on each</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Mark them ✓ Done</strong> when you've reached out</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Quick scan of Needs Attention</strong> — handle anything that catches your eye</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Pull down to refresh</strong> the leads list to sync</div>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">📋 Every Evening (5 minutes)</div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Log today's conversations</strong> — add remarks to leads you talked to</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Update stages</strong> — move leads forward if you had a meeting or sent a proposal</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Add new leads</strong> you collected during the day</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Set follow-up dates</strong> for anyone who said "talk to you next week"</div>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-title">📊 Every Sunday (15 minutes)</div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Open My Report</strong> — see your weekly numbers</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Check conversion funnel</strong> — where are leads getting stuck?</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Review your top source</strong> — double down on what's working</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Plan the week</strong> — book meetings, schedule outreach</div>
+    </div>
+    <div class="checklist-item">
+      <div class="checklist-box"></div>
+      <div class="checklist-text"><strong>Send your report</strong> to your manager</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 10: COMPLIANCE ============== -->
+<section id="s10" class="section">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <h2 class="section-title">Compliance Reminders</h2>
+  </div>
+
+  <div class="callout danger">
+    <div class="callout-icon">⚖️</div>
+    <div class="callout-body">
+      <strong>You are a licensed representative of AIA Singapore</strong>
+      Everything you send to clients — WhatsApp, email, social posts — must follow AIA's compliance rules. This is not optional.
+    </div>
+  </div>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <div class="do-title">Always do</div>
+      <ul class="do-list">
+        <li>Review every CRM-suggested message before sending</li>
+        <li>Use neutral language ("planning," "options," "review")</li>
+        <li>Identify yourself as an AIA representative</li>
+        <li>Keep client information confidential</li>
+        <li>Document conversations in remarks</li>
+      </ul>
+    </div>
+    <div class="dont-card">
+      <div class="dont-title">Never do</div>
+      <ul class="dont-list">
+        <li>Name specific AIA products in cold outreach</li>
+        <li>Give specific advice without a fact-find</li>
+        <li>Promise returns or guarantees</li>
+        <li>Share screenshots of client data</li>
+        <li>Forward messages with policy details to others</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The Pre-Written Messages are Safe</h3>
+    <p>The CRM's WA and email templates are designed to be <strong>compliance-safe</strong>. They don't name products, don't promise returns, and use neutral language.</p>
+    <p>If you edit them — that's on you. Stay neutral. When in doubt, ask Medz before sending.</p>
+  </div>
+</section>
+
+<!-- ============== SECTION 11: FAQ ============== -->
+<section id="s11" class="section">
+  <div class="section-header">
+    <div class="section-num">11</div>
+    <h2 class="section-title">Common Questions</h2>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">My leads aren't showing up. What do I do?</div>
+    <div class="faq-a"><strong>Pull down at the top of the Leads list</strong> to refresh from the cloud. If still missing, check that you're logged in as the right user (top right). If still missing, message Medz.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why is one lead at the top with a red URGENT badge?</div>
+    <div class="faq-a">The engine sees something urgent — usually an overdue follow-up, a hot lead going cold, or a Met-stage lead that needs a proposal. Tap it and the Smart Analysis panel will tell you exactly what.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Can I see other agents' leads?</div>
+    <div class="faq-a">No. You only see your own leads. Only your manager has the master view to see all agents. Your data is private.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">What if I lose my phone? Will I lose my leads?</div>
+    <div class="faq-a">No. Everything syncs to the cloud automatically. Log in from any phone or computer with your PIN and your data comes back.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">I added a lead but it's not in Today's 5. Why?</div>
+    <div class="faq-a">Today's 5 picks the <strong>top 5 most urgent</strong> leads. A brand-new lead has lower urgency than an overdue follow-up. After you mark it "Contacted" and a few days pass, its priority will rise.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">The engine suggested a message, but it doesn't fit my client's situation. Can I change it?</div>
+    <div class="faq-a">Yes — always. The pre-written message is a <strong>starting point, not a script</strong>. Edit it to match the conversation. Just keep it compliance-safe.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">I haven't used the CRM in a week. Where do I start?</div>
+    <div class="faq-a">Open it. Don't feel guilty. Just look at <strong>⚡ Needs Attention</strong> and your <strong>Today's 5</strong>. Work the top 3. Move forward. Don't try to "catch up everything" — that's overwhelming. Just start again.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">Why does the engine show different leads each day?</div>
+    <div class="faq-a">Because <strong>time changes everything</strong>. A lead you contacted yesterday is fresh. A lead you contacted 14 days ago is going stale. The engine recalculates priority every time you open the app. That's the magic.</div>
+  </div>
+</section>
+
+<!-- FINAL MOTIVATION -->
+<div class="motivate">
+  <div class="motivate-title">⭐ One Last Thing</div>
+  <div class="motivate-quote">"The CRM doesn't close cases. You do. But it makes sure you never miss the leads that would have."</div>
+  <div class="motivate-sig">— Medz Ron Macasaet · SP Ad Astra</div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">SP Ad Astra · AIA Singapore</div>
+  <div>For questions, message your team lead.<br>You've got this. 🚀</div>
+</div>
+
+</body>
+</html>
